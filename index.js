@@ -79,6 +79,7 @@ class Car {
   this.model = model;
   this.milesPerGallon = mpg;
   this.tank = 0;
+  this.odometer =0;
 }
 fill(gallons){
   this.tank = this.tank + gallons;
@@ -167,6 +168,10 @@ class Student extends Lambdasian {
      super(name, age, location, previousBackground, className, favSubjects);
      this.previousBackground = previousBackground;
      this.className = className;
+     this.name = name;
+     this.age = age;
+     this.location = location;
+     this.favSubjects = favSubjects;
    }
    listSubjects(){
     return `I love ${this.favSubjects}`
@@ -192,8 +197,18 @@ sprintChallenge(subject){
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-   
+class ProjectManager extends Instructor{
+   constructor({name, age, location, specialty, favLanguage, catchPhrase, gradClassName, favInstructor}){
+     super({name, age, location, specialty, favLanguage, catchPhrase, gradClassName, favInstructor});
+     this.gradClassName =gradClassName;
+     this.favInstructor = favInstructor;
+   }
+   standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+   }
+   debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+   }
 }
 /*
   STRETCH PROBLEM (no tests!)
