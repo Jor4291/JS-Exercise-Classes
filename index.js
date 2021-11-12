@@ -48,16 +48,18 @@ class Person {
     this.stomach = [];
   }
   eat(edible){
-    if(this.stomach.length < 10){
-      this.stomach.push(edible);    
-  }
+if(this.stomach.length <10 ){
+  this.stomach.push(edible);
+}
 }
 poop(){
   this.stomach = [];
 }
 toString(){
-  return `${this.name} , ${this.age}`;
+  return`${this.name}, ${this.age}`;
 }
+}
+
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -72,29 +74,27 @@ toString(){
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
- class Car {
-  constructor(model, milesPerGallon){
-    this.model = model
-    this.milesPerGallon = milesPerGallon;
+class Car {
+  constructor(model, mpg){
+  this.model = model;
+  this.milesPerGallon = mpg;
+  this.tank = 0;
+}
+fill(gallons){
+  this.tank = this.tank + gallons;
+}
+drive(dist){
+  const drivableMiles = this.tank * this.milesPerGallon;
+  if(dist <= drivableMiles){
+    this.odometer = this.odometer + dist;
+    this.tank = this.tank -(dist / this.milesPerGallon);
+  }else{
+    this.odometer = this.odometer + drivableMiles;
     this.tank = 0;
-    this.odometer = 0;
-  }
-  fill(gallons){
-    this.tank = this.tank + gallons;
-  }
-  drive(dist){
-    const drivableMiles = this.tank *this.milesPerGallon;
-    if(dist <= drivableMiles){
-      this.odometer = this.odometer +dist;
-      this.tank = this.tank -( dist/ this.milesPerGallon);
-    }else{
-      this.odometer = this.odometer +drivableMiles;
-      this.tank = 0;
-      return `I ran out of fuel at ${this.odometer} miles!`
-    }
+    return `I ran out of fuel at ${this.odometer} miles!`
   }
 }
-
+}
 /*
   TASK 3
     - Write a Lambdasian class.
